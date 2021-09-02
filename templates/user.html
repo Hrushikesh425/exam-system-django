@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{request.user}}{% endblock title %}
+
+{% block body %}
+
+<div class="fs-2 bg-dark text-danger text-center fw-bold mt-4">Tests of all subjects are here</div>
+
+<div class="fs-4 text-center fw-bold  mt-4 mb-2">Mathematics</div>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+  <a class="btn btn-primary" type="button" href="/exam">Test 1</a>
+  <a class="btn btn-primary" type="button">Test 2</a>
+</div>
+
+<div class="fs-4 text-center fw-bold mt-4 mb-2">Physics</div>
+
+<div class="d-grid gap-2 col-6 mx-auto">
+  <a class="btn btn-primary" type="button" href="#">Test 1</a>
+  <a class="btn btn-primary" type="button">Test 2</a>
+</div>
+
+{% endblock body %}

@@ -1,0 +1,128 @@
+{% extends 'base.html' %}
+
+{% block scripts %}
+
+<script> 
+
+    var timer = setTimeout(function () {
+        // window.location = 'index'
+        document.getElementById('b1').click();
+    }, 60000);
+
+
+    function dec_min() {
+        min = parseInt($('.min').html());
+        if (min !== 0) {
+            $('.min').html(min - 1 + "m");
+            $('.sec').html(59 + "s");
+        }
+        else {
+            dec_hr();
+        }
+    }
+    $(document).ready(function () {
+        var Update = function () {
+            $('.sec').each(function () {
+                var count = parseInt($(this).html());
+                if (count !== 0) {
+                    $(this).html(count - 1 + "s");
+                }
+                else {
+                    dec_min();
+                }
+            });
+        };
+        setInterval(Update, 1000);
+    });
+
+    function myStopFunction() {
+        clearTimeout(timer);
+        window.location = 'index'
+    }
+
+    $(document).ready(function () {
+        $("#b1").click(function () {
+            $(".rb").show();
+            $(".rb").attr("disabled", true);
+        })
+    })
+
+    function getanswers() {
+        var count = 0;
+        document.getElementById("useranswers").innerHTML = "";
+        var e = document.getElementsByTagName("input");
+        document.getElementById("useranswers").innerHTML = "Your answers for question number<br>"
+
+        for (let i = 0; i <= e.length; i++) {
+
+            if (e[i].type == "radio") {
+
+                if (e[i].checked) {
+
+                    document.getElementById("useranswers").innerHTML += e[i].name + ". " + e[i].value + "<br>"
+
+                }
+
+
+            }
+
+        }
+
+
+    }
+
+    
+
+</script>
+
+{% endblock scripts %}
+{% block title %}Exam{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <div class="row">
+        <div class="container display-2 d-flex justify-content-center text-danger col-sm">Test 1</div>
+        <div style="text-align:right" class="col-sm">
+            <span class="min" style="font-size: 50px">1</span>
+            <span class="sec" style="font-size: 50px">00</span>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <hr>
+    {% for i in exam %}
+
+    <table>
+        <tr>
+            <td class="d-flex justify-content-center">{{i.id}}) {{i.Question}}</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="rb" name={{i.id}} id="Option1" value="{{i.opt1}}"> {{i.opt1}}</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="rb" name={{i.id}} id="Option2" value="{{i.opt2}}"> {{i.opt2}}</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="rb" name={{i.id}} id="Option3" value="{{i.opt3}}"> {{i.opt3}}</td>
+        </tr>
+        <tr>
+            <td><input type="radio" class="rb" name={{i.id}} id="Option4" value="{{i.opt4}}"> {{i.opt4}}</td>
+        </tr>
+
+        <tr>
+            <td><label id="Correct_ans" class="rb" style="display: none; color: green"><b>{{i.correct_ans}}</b></label>
+            </td>
+        </tr>
+    </table>
+    <hr>
+
+    {% endfor %}
+
+    <input type="submit" class="btn btn-success mb-3" value="Submit" id="b1" onclick="getanswers()">
+    <button class="btn btn-danger mb-3" onclick="myStopFunction()">Leave</button>
+    <br>
+    <b id="useranswers"></b>
+</div>
+{% endblock body %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}CS II{% endblock title %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <div class="container-xl d-flex flex-column">
+        <div class="title my-4 fs-2"><strong>Computer Science II</strong></div>
+        <div class="content">
+            <p>
+                Microprocessor is a controlling unit of a micro-computer, fabricated on a small chip <strong>capable of
+                    performing
+                    ALU (Arithmetic Logical Unit) operations</strong> and communicating with the other devices connected
+                to it.
+            </p>
+
+            <p>
+                Microprocessor consists of an ALU, register array, and a control unit. ALU performs arithmetical and
+                logical
+                operations on the data received from the memory or an input device. Register array consists of registers
+                identified by letters like B, C, D, E, H, L and accumulator. The control unit controls the flow of data
+                and
+                instructions within the computer.
+            </p>
+
+            <p>Block Diagram of a Basic Microcomputer</p>
+            <img class="container-fluid" src="/static/microcomputer.jpg" alt="">
+
+            <p>
+                Initially, the instructions are stored in the memory in a sequential order. The microprocessor fetches
+                those
+                instructions from the memory, then decodes it and executes those instructions till STOP instruction is
+                reached. Later, it sends the result in binary to the output port. Between these processes, the register
+                stores the temporarily data and ALU performs the computing functions.
+            </p>
+
+            <p>Download <strong class="text-danger">syllabus</strong> of Microprocessor from clicking below</p>
+            <a href="/static/Microproccessor.pdf" download="class 11 and 12 syllabus">
+                <button type="button" class="btn btn-outline-success mb-5">Download</button></a>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}
